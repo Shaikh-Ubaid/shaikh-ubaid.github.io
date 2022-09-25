@@ -1,4 +1,5 @@
 import fs from 'fs';
+import dayjs from "dayjs"
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
 import mdConverter from './markdownConverter';
@@ -18,6 +19,7 @@ class BlogsReader {
                     excerpt: data.excerpt || "Excerpt not found",
                     title: data.title || "Title not found",
                     publishedAt: data.publishedAt || "PublishedAt not found",
+                    day: dayjs(data.publishedAt).format("MMMM D, YYYY") || "",
                     readingTime: readingTime(blogSource).text,
                 },
             }
