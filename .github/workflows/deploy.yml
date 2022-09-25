@@ -1,0 +1,71 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: CI
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - name: Checkout Master
+      uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install Dependencies
+      shell: bash -l {0}
+      run: npm i
+
+    - name: Build Site
+      shell: bash -l {0}
+      run: |
+        npm run build
+        npm run export
+        mv out deploy
+
+    - name: GIT Setup Config
+      shell: bash -l {0}
+      run: |
+        git config user.email "noreply@deploy"
+        git config user.name "Deploy"
+
+    - name: GIT Checkout gh-pages
+      shell: bash -l {0}
+      run: |
+        cp deploy/ ../deploy -r
+        git reset --hard
+        git fetch origin
+        git checkout gh-pages
+
+    - name: Misc Steps
+      shell: bash -l {0}
+      run: |
+        rm -rf *
+        mv ../deploy/* .
+        touch .nojekyll
+        echo "www.ubaidshaikh.me" > CNAME
+
+    - name: GIT Add and Commit
+      shell: bash -l {0}
+      run: |
+        git add .
+        COMMIT_MESSAGE="Deploying on $(date "+%Y-%m-%d %H:%M:%S")"
+        git commit -m "${COMMIT_MESSAGE}"
+
+    - name: GIT Deploy
+      run: git push origin gh-pages
