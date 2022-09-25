@@ -1,17 +1,18 @@
 import React from 'react';
-import blogsReader from '../utils/blogsReader';
 
-function index({ blogs }) {
+function index() {
     return (
-        <div>This is main page of blog website</div>
+        <>
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col lg:flex-row">
+                    <div>
+                        <h1 className="text-5xl font-bold">Hi, I am Ubaid Shaikh</h1>
+                        <p className="py-6">I love creating things</p>
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
 
-export const getStaticProps = async () => {
-    return {
-        props: {
-            blogs: blogsReader.getBlogs(),
-        },
-    };
-};
 export default index;
