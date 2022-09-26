@@ -5,8 +5,7 @@ function contact() {
                 <article className="prose prose-lg mb-5">
                     <h1>Contact</h1>
                     <p>
-                        If there is anything you would lik to discuss with me,
-                        get in touch!
+                        Get in touch!
                     </p>
                 </article>
                 <div className="mx-auto w-full max-w-[550px]">
