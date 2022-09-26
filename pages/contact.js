@@ -5,12 +5,17 @@ function contact() {
                 <article className="prose prose-lg mb-5">
                     <h1>Contact</h1>
                     <p>
-                        If there is anything you would want to discuss with me,
+                        If there is anything you would lik to discuss with me,
                         get in touch!
                     </p>
                 </article>
                 <div className="mx-auto w-full max-w-[550px]">
-                    <form action="https://formbold.com/s/FORM_ID" method="POST">
+                    <form
+                        action="https://docs.google.com/forms/d/e/1FAIpQLSfhUIiifGi2fSSBwuDSaLNFStfxU7eNk7E4sI1zLaUVIdh_tA/formResponse"
+                        target="_self"
+                        method="POST"
+                        id="mG61Hd"
+                        >
                         <div className="mb-5">
                             <label
                                 htmlFor="name"
@@ -20,7 +25,7 @@ function contact() {
                             </label>
                             <input
                                 type="text"
-                                name="name"
+                                name="entry.201674409"
                                 id="name"
                                 placeholder="Name"
                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -35,7 +40,7 @@ function contact() {
                             </label>
                             <input
                                 type="email"
-                                name="email"
+                                name="entry.1888292093"
                                 id="email"
                                 placeholder="example@domain.com"
                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -50,7 +55,7 @@ function contact() {
                             </label>
                             <textarea
                                 rows="4"
-                                name="message"
+                                name="entry.1236758430"
                                 id="message"
                                 placeholder="Type your message"
                                 className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium outline-none focus:border-[#6A64F1] focus:shadow-md"
