@@ -34,11 +34,13 @@ jobs:
     - name: Build Site
       shell: bash -l {0}
       run: |
-        touch .env
-        echo GA_MEASUREMENT_ID=${{ secrets.GA_MEASUREMENT_ID }} > .env
+        echo process.env.GA_MEASUREMENT_ID=\"${GA_MEASUREMENT_ID}\" > main.js
+        node main.js
         npm run build
         npm run export
         mv out deploy
+      env:
+        GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
 
     - name: GIT Setup Config
       shell: bash -l {0}
